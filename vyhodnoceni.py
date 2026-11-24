@@ -72,6 +72,7 @@ def sloupce(ax, df, sloupec, titulek, jednotka=""):
     ax.set_title(titulek, loc="left", color=INK, fontsize=11)
     if jednotka:
         ax.set_ylabel(jednotka)
+    ax.set_ylim(bottom=0)
     ax.grid(axis="y", color=MRIZKA, linewidth=0.8, zorder=0)
     ax.tick_params(length=0)
 
@@ -107,6 +108,7 @@ def main():
 
     auto = {"slov": "slov", "abs_odchylka_pct": "odchylka délky %", "odstavcu": "odstavců",
             "chyb_na_100_slov": "chyb/100 slov", "podil_spatny_jazyk_pct": "cizí jazyk %",
+            "slov_cizi_pismo": "slov v azbuce ap.", "podil_opakovanych_vet": "opakované věty (podíl)",
             "markdown": "Markdown (podíl)", "useknuto": "useknuto (podíl)"}
     rychlost = {"tokeny_za_s": "tok/s", "eval_count": "tokenů", "cas_celkem_s": "čas [s]"}
 
@@ -138,7 +140,7 @@ def main():
     (VYSLEDKY / "souhrn.md").write_text("\n".join(md), encoding="utf-8")
 
     graf(df, [("chyb_na_100_slov", "Pravopisné chyby", "na 100 slov"),
-              ("podil_spatny_jazyk_pct", "Věty ve špatném jazyce", "%"),
+              ("slov_cizi_pismo", "Slova v azbuce apod.", "slov na esej"),
               ("abs_odchylka_pct", "Odchylka od 300 slov", "% (absolutně)"),
               ("odstavcu", "Počet odstavců", "odstavců")],
          "automaticke_metriky.png", "Automatické metriky")

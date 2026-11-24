@@ -1,0 +1,9 @@
+{
+  "datum": "2026-11-24T11:54:41",
+  "ollama_verze": "0.40.17",
+  "os": "Windows-10-10.0.26200-SP0",
+  "procesor": "Intel64 Family 6 Model 191 Stepping 2, GenuineIntel",
+  "python": "3.11.9",
+  "seed": 42,
+  "pojistka_num_predict_zakladni": 1500
+}

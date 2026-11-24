@@ -7,6 +7,7 @@ Hotové eseje se přeskakují, takže skript jde přerušit (Ctrl+C) a spustit z
 
 Příklady:
     python generuj.py                       # vše (40 esejí)
+    python generuj.py --tema 1 --tema 2 --tema 3   # jen vybraná témata (24 esejí)
     python generuj.py --limit 1             # rychlý test: 1 esej
     python generuj.py --model gemma3 --jazyk cs --tema 1
     python generuj.py --prepsat             # vygenerovat znovu i hotové
@@ -68,17 +69,19 @@ def main():
                          "Běží server (ollama.exe serve)?")
     zapis_prostredi(k)
 
-    # Pořadí: model -> varianta -> jazyk -> téma, aby se model co nejméně přenačítal
+    # Pořadí: téma -> jazyk -> model -> varianta. Když se běh přeruší po
+    # dokončeném tématu, mají všechny kombinace model/varianta/jazyk stejná
+    # témata a data zůstanou vyvážená (cenou je častější přepínání modelů).
     ukoly = []
-    for model in a.model or MODELY:
-        for varianta in a.varianta or VARIANTY:
-            jmeno = MODELY[model][varianta]
-            if jmeno not in dostupne and f"{jmeno}:latest" not in dostupne:
-                print(f"! Model {jmeno} v Ollamě chybí, přeskakuji (ollama pull / ollama create)")
-                continue
-            for jazyk in a.jazyk or JAZYKY:
-                for t in data["temata"]:
-                    if a.tema and t["id"] not in a.tema:
+    for t in data["temata"]:
+        if a.tema and t["id"] not in a.tema:
+            continue
+        for jazyk in a.jazyk or JAZYKY:
+            for model in a.model or MODELY:
+                for varianta in a.varianta or VARIANTY:
+                    jmeno = MODELY[model][varianta]
+                    if jmeno not in dostupne and f"{jmeno}:latest" not in dostupne:
+                        print(f"! Model {jmeno} v Ollamě chybí, přeskakuji")
                         continue
                     soubor = VYSTUPY / nazev_souboru(model, varianta, jazyk, t["id"])
                     if soubor.exists() and not a.prepsat:

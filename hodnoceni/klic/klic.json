@@ -1,0 +1,173 @@
+{
+  "seed": 766776769,
+  "eseje": {
+    "E01": {
+      "model": "gemma3",
+      "varianta": "zakladni",
+      "jazyk": "cs",
+      "tema_id": 3,
+      "soubor": "gemma3__zakladni__cs__t3.txt"
+    },
+    "E02": {
+      "model": "llama3.2",
+      "varianta": "custom",
+      "jazyk": "cs",
+      "tema_id": 3,
+      "soubor": "llama3.2__custom__cs__t3.txt"
+    },
+    "E03": {
+      "model": "gemma3",
+      "varianta": "zakladni",
+      "jazyk": "cs",
+      "tema_id": 2,
+      "soubor": "gemma3__zakladni__cs__t2.txt"
+    },
+    "E04": {
+      "model": "gemma3",
+      "varianta": "custom",
+      "jazyk": "cs",
+      "tema_id": 2,
+      "soubor": "gemma3__custom__cs__t2.txt"
+    },
+    "E05": {
+      "model": "llama3.2",
+      "varianta": "custom",
+      "jazyk": "cs",
+      "tema_id": 2,
+      "soubor": "llama3.2__custom__cs__t2.txt"
+    },
+    "E06": {
+      "model": "llama3.2",
+      "varianta": "custom",
+      "jazyk": "cs",
+      "tema_id": 1,
+      "soubor": "llama3.2__custom__cs__t1.txt"
+    },
+    "E07": {
+      "model": "llama3.2",
+      "varianta": "zakladni",
+      "jazyk": "cs",
+      "tema_id": 2,
+      "soubor": "llama3.2__zakladni__cs__t2.txt"
+    },
+    "E08": {
+      "model": "gemma3",
+      "varianta": "custom",
+      "jazyk": "cs",
+      "tema_id": 1,
+      "soubor": "gemma3__custom__cs__t1.txt"
+    },
+    "E09": {
+      "model": "llama3.2",
+      "varianta": "zakladni",
+      "jazyk": "cs",
+      "tema_id": 1,
+      "soubor": "llama3.2__zakladni__cs__t1.txt"
+    },
+    "E10": {
+      "model": "llama3.2",
+      "varianta": "zakladni",
+      "jazyk": "cs",
+      "tema_id": 3,
+      "soubor": "llama3.2__zakladni__cs__t3.txt"
+    },
+    "E11": {
+      "model": "gemma3",
+      "varianta": "zakladni",
+      "jazyk": "cs",
+      "tema_id": 1,
+      "soubor": "gemma3__zakladni__cs__t1.txt"
+    },
+    "E12": {
+      "model": "gemma3",
+      "varianta": "custom",
+      "jazyk": "cs",
+      "tema_id": 3,
+      "soubor": "gemma3__custom__cs__t3.txt"
+    },
+    "E13": {
+      "model": "llama3.2",
+      "varianta": "custom",
+      "jazyk": "en",
+      "tema_id": 3,
+      "soubor": "llama3.2__custom__en__t3.txt"
+    },
+    "E14": {
+      "model": "gemma3",
+      "varianta": "custom",
+      "jazyk": "en",
+      "tema_id": 1,
+      "soubor": "gemma3__custom__en__t1.txt"
+    },
+    "E15": {
+      "model": "gemma3",
+      "varianta": "zakladni",
+      "jazyk": "en",
+      "tema_id": 1,
+      "soubor": "gemma3__zakladni__en__t1.txt"
+    },
+    "E16": {
+      "model": "gemma3",
+      "varianta": "zakladni",
+      "jazyk": "en",
+      "tema_id": 3,
+      "soubor": "gemma3__zakladni__en__t3.txt"
+    },
+    "E17": {
+      "model": "gemma3",
+      "varianta": "custom",
+      "jazyk": "en",
+      "tema_id": 2,
+      "soubor": "gemma3__custom__en__t2.txt"
+    },
+    "E18": {
+      "model": "llama3.2",
+      "varianta": "zakladni",
+      "jazyk": "en",
+      "tema_id": 1,
+      "soubor": "llama3.2__zakladni__en__t1.txt"
+    },
+    "E19": {
+      "model": "llama3.2",
+      "varianta": "custom",
+      "jazyk": "en",
+      "tema_id": 1,
+      "soubor": "llama3.2__custom__en__t1.txt"
+    },
+    "E20": {
+      "model": "gemma3",
+      "varianta": "zakladni",
+      "jazyk": "en",
+      "tema_id": 2,
+      "soubor": "gemma3__zakladni__en__t2.txt"
+    },
+    "E21": {
+      "model": "llama3.2",
+      "varianta": "zakladni",
+      "jazyk": "en",
+      "tema_id": 3,
+      "soubor": "llama3.2__zakladni__en__t3.txt"
+    },
+    "E22": {
+      "model": "llama3.2",
+      "varianta": "zakladni",
+      "jazyk": "en",
+      "tema_id": 2,
+      "soubor": "llama3.2__zakladni__en__t2.txt"
+    },
+    "E23": {
+      "model": "llama3.2",
+      "varianta": "custom",
+      "jazyk": "en",
+      "tema_id": 2,
+      "soubor": "llama3.2__custom__en__t2.txt"
+    },
+    "E24": {
+      "model": "gemma3",
+      "varianta": "custom",
+      "jazyk": "en",
+      "tema_id": 3,
+      "soubor": "gemma3__custom__en__t3.txt"
+    }
+  }
+}

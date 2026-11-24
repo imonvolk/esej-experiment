@@ -8,10 +8,13 @@ Metriky:
                           (langdetect + kontrola slovníkem, viz README)
 - podil_spatny_jazyk_ld   totéž jen podle langdetect (pro srovnání)
 - markdown                obsahuje text Markdown (**, #, odrážky)?
+- slov_cizi_pismo         slova v nelatinkovém písmu (azbuka vmíchaná do češtiny)
+- podil_opakovanych_vet   podíl vět, které se v textu doslova opakují
 
 Vše běží offline (slovníky stáhne jednou stahni_slovniky.py).
 """
 import re
+import unicodedata
 
 import pandas as pd
 from langdetect import DetectorFactory, detect_langs
@@ -87,6 +90,13 @@ def zmer(text, jazyk, cil):
     cizi = sorted({r[2] for r in vysl if r[1] and r[2]})
     n_vet = len(vety_hodnocene) or 1
 
+    # slova v jiném než latinském písmu (např. azbuka vmíchaná do češtiny)
+    cizi_pismo = [s for s in sl if not all(c.isascii() or "LATIN" in unicodedata.name(c, "")
+                                           for c in s if c.isalpha())]
+    # opakování: věty, které už v textu jednou byly (po normalizaci)
+    normalizovane = [" ".join(slova(v)).lower() for v in vety_hodnocene]
+    opakovane = len(normalizovane) - len(set(normalizovane))
+
     return {
         "slov": len(sl),
         "odchylka_slov": len(sl) - cil,
@@ -101,6 +111,8 @@ def zmer(text, jazyk, cil):
         "podil_spatny_jazyk": round(spatne / n_vet, 3),
         "podil_spatny_jazyk_ld": round(spatne_ld / n_vet, 3),
         "cizi_jazyky": ",".join(cizi),
+        "slov_cizi_pismo": len(cizi_pismo),
+        "podil_opakovanych_vet": round(opakovane / n_vet, 3),
         "markdown": bool(re.search(r"\*\*|^#|^\s*[-*•]\s", text, re.M)),
         "chybna_slova": ", ".join(chybna[:30]),
     }
@@ -118,7 +130,8 @@ def main():
         radky.append({"model": model, "varianta": varianta, "jazyk": jazyk,
                       "tema_id": tema_id, "soubor": s.name, **m})
         print(f"{s.name:35} {m['slov']:4} slov  {m['chyb_na_100_slov']:5} chyb/100  "
-              f"{m['podil_spatny_jazyk']:.0%} cizí jazyk  {m['odstavcu']} odst.")
+              f"{m['podil_spatny_jazyk']:.0%} cizí jazyk  {m['odstavcu']} odst.  "
+              f"{m['slov_cizi_pismo']} azbuka  {m['podil_opakovanych_vet']:.0%} opak.")
     VYSLEDKY.mkdir(exist_ok=True)
     pd.DataFrame(radky).to_csv(VYSLEDKY / "metriky.csv", index=False, encoding="utf-8-sig")
     print(f"\nUloženo: {VYSLEDKY / 'metriky.csv'} ({len(radky)} esejí)")
