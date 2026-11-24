@@ -1,0 +1,34 @@
+{
+  "cilova_delka_slov": 300,
+  "temata": [
+    {
+      "id": 1,
+      "cs": "Měly by mít školy povinnou výuku programování od základní školy?",
+      "en": "Should schools make programming a compulsory subject from primary school?"
+    },
+    {
+      "id": 2,
+      "cs": "Výhody a nevýhody práce z domova.",
+      "en": "The advantages and disadvantages of working from home."
+    },
+    {
+      "id": 3,
+      "cs": "Jak sociální sítě ovlivňují mezilidské vztahy?",
+      "en": "How do social networks affect human relationships?"
+    },
+    {
+      "id": 4,
+      "cs": "Co může udělat jednotlivec pro ochranu životního prostředí?",
+      "en": "What can an individual do to protect the environment?"
+    },
+    {
+      "id": 5,
+      "cs": "Má smysl v dnešní době číst papírové knihy?",
+      "en": "Does it still make sense to read paper books today?"
+    }
+  ],
+  "zadani_sablona": {
+    "cs": "Napiš esej v češtině na téma: „{tema}“ Rozsah asi {delka} slov.",
+    "en": "Write an essay in English on the topic: \"{tema}\" Length about {delka} words."
+  }
+}

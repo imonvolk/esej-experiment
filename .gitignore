@@ -1,0 +1,25 @@
+# Modely a binárky Ollamy se do repa nedávají
+*.gguf
+*.bin
+*.safetensors
+blobs/
+manifests/
+models/
+.ollama/
+ollama.exe
+lib/
+
+# Hunspell slovníky se stahují skriptem stahni_slovniky.py
+slovniky/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Excel zámky a systémové soubory
+~$*
+.~lock.*
+Thumbs.db
+desktop.ini
