@@ -155,8 +155,37 @@ tokenizéry dělí češtinu na menší kousky. Žádná esej nebyla useknuta li
 
 ### Slepé lidské hodnocení
 
-<!-- HODNOCENI: doplnit po vyplnění hodnoceni/hodnotici_list.csv a spuštění odkryj.py + vyhodnoceni.py -->
-*Zatím nevyplněno.*
+Jeden hodnotitel (autor experimentu), 24 esejí pod náhodnými kódy, známky 1–5.
+Data po esejích: `hodnoceni/hodnotici_list.csv`, po odkrytí `vysledky/spojene.csv`.
+
+| jazyk | model | varianta | gramatika | srozumitelnost | držení tématu | struktura | **průměr** |
+|---|---|---|---|---|---|---|---|
+| cs | gemma3 | základní | 4,67 | 5,00 | 4,67 | 3,67 | **4,50** |
+| cs | gemma3 | custom | 4,33 | 4,33 | 4,33 | 3,33 | **4,08** |
+| cs | llama3.2 | základní | 3,67 | 3,67 | 3,67 | 2,67 | **3,42** |
+| cs | llama3.2 | custom | 3,67 | 4,00 | 3,67 | 2,67 | **3,50** |
+| en | gemma3 | základní | 4,67 | 4,67 | 4,67 | 3,67 | **4,42** |
+| en | gemma3 | custom | 4,67 | 4,67 | 4,67 | 3,67 | **4,42** |
+| en | llama3.2 | základní | 3,33 | 3,33 | 3,33 | 2,33 | **3,08** |
+| en | llama3.2 | custom | 4,33 | 4,33 | 4,33 | 3,33 | **4,08** |
+
+![Slepé hodnocení](vysledky/grafy/hodnoceni.png)
+
+- **Čeština:** Gemma hodnocena lépe než Llama (průměr 4,29 vs. 3,46) – shoda s automatickými metrikami.
+- **Angličtina:** Gemma 4,42, Llama 3,58 – lidské hodnocení vidí rozdíl i tam, kde automatické
+  metriky žádný nenašly (pravopis je u obou bezchybný; rozdíl je v obsahu a stylu).
+- **Customizace** u Llamy v angličtině zvedla hodnocení z 3,08 na 4,08; u Gemmy hodnocení
+  nezlepšila (v češtině mírně horší, 4,08 vs. 4,50).
+
+**Výhrady k hodnocení:**
+
+- Hodnotil jen jeden člověk, n = 3 na buňku – rozdíly 0,3–0,5 bodu mohou být náhoda.
+- Kritéria nebyla hodnocena nezávisle: u 23 z 24 esejí platí gramatika = srozumitelnost =
+  držení tématu a struktura = o 1 méně. Rubrika tak fakticky funguje jako jedna celková známka.
+- Hodnocení se místy rozchází s automatickými metrikami: esej E06 (llama3.2 custom, cs)
+  dostala za gramatiku 5, ačkoli obsahuje slova v azbuce a 18 % opakovaných vět.
+- Základní Gemma píše Markdown (`**tučně**`), takže ji hodnotitel mohl poznat – hodnocení
+  nebylo úplně slepé.
 
 ### Omezení experimentu
 
@@ -171,18 +200,22 @@ tokenizéry dělí češtinu na menší kousky. Žádná esej nebyla useknuta li
 
 ## Závěr
 
-**Hypotéza se potvrdila** (podle automatických metrik; lidské hodnocení zatím chybí):
+**Hypotéza se potvrdila jen zčásti:**
 
-1. V angličtině jsou modely **vyrovnané** – oba píšou bez chyb a drží délku i strukturu.
+1. V angličtině jsou modely vyrovnané **jen podle automatických metrik** (oba bez chyb,
+   drží délku i strukturu). Lidské hodnocení dalo Gemmě víc (4,42 vs. 3,58), takže
+   „vyrovnané“ platí pro pravopis a formu, ne pro celkovou kvalitu textu.
 2. V češtině je **Gemma výrazně lepší**: ~0,7 vs. ~9,3 pravopisných chyb na 100 slov
-   (zhruba 13× méně). Llama 3.2 3B česky použitelně nepíše – míchá jazyky a vymýšlí slova.
+   (zhruba 13× méně) a lepší lidské hodnocení (4,29 vs. 3,46). Llama 3.2 3B česky
+   použitelně nepíše – míchá jazyky a vymýšlí slova. **Tato část hypotézy se potvrdila.**
 3. Customizace pomohla hlavně **formě** (bez Markdownu, správný počet odstavců, délka),
-   **jazykovou kvalitu nezlepšila** – tu určuje základní model.
+   **pravopis nezlepšila** – ten určuje základní model. V lidském hodnocení pomohla jen
+   Llamě v angličtině (3,08 → 4,08), u Gemmy ne.
 
 **Šlo by to použít?**
 
-- **Anglické eseje:** ano, oba modely. Llama je o ~20 % rychlejší a menší (2 GB), takže
-  na slabším počítači je rozumnější volbou.
+- **Anglické eseje:** ano, oba modely – Gemma píše o něco lépe, Llama je o ~20 % rychlejší
+  a menší (2 GB). Llamu používat jen v customizované variantě (lidské hodnocení 4,08 vs. 3,08).
 - **České eseje:** jen **gemma3:4b**, a to jako *koncept k úpravě*, ne hotový text –
   občas se objeví slovenské nebo anglické slovo. llama3.2:3b pro češtinu nepoužívat.
 
@@ -192,4 +225,4 @@ tokenizéry dělí češtinu na menší kousky. Žádná esej nebyla useknuta li
 - použít customizovaný Modelfile (jinak model vrací Markdown a nedrží strukturu)
 - výstup v češtině vždy zkontrolovat (kontrola pravopisu + přečtení člověkem)
 - pro spolehlivější závěr: všech 5 témat, víc generování na kombinaci (různé seedy),
-  vyplněné slepé hodnocení, ideálně od více hodnotitelů
+  hodnocení od více hodnotitelů, kteří hodnotí každé kritérium zvlášť

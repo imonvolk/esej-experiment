@@ -28,13 +28,26 @@ Automaticky vygenerováno skriptem `vyhodnoceni.py`. Hodnoty jsou průměry pře
 | en | llama3.2 | custom | 23.50 | 344.30 | 15.00 |
 | en | llama3.2 | zakladni | 25.10 | 365.30 | 14.90 |
 
+## Slepé lidské hodnocení (1–5)
+
+| jazyk | model | varianta | gramatika | srozumitelnost | drzeni_tematu | struktura | průměr |
+|---|---|---|---|---|---|---|---|
+| cs | gemma3 | custom | 4.33 | 4.33 | 4.33 | 3.33 | 4.08 |
+| cs | gemma3 | zakladni | 4.67 | 5.00 | 4.67 | 3.67 | 4.50 |
+| cs | llama3.2 | custom | 3.67 | 4.00 | 3.67 | 2.67 | 3.50 |
+| cs | llama3.2 | zakladni | 3.67 | 3.67 | 3.67 | 2.67 | 3.42 |
+| en | gemma3 | custom | 4.67 | 4.67 | 4.67 | 3.67 | 4.42 |
+| en | gemma3 | zakladni | 4.67 | 4.67 | 4.67 | 3.67 | 4.42 |
+| en | llama3.2 | custom | 4.33 | 4.33 | 4.33 | 3.33 | 4.08 |
+| en | llama3.2 | zakladni | 3.33 | 3.33 | 3.33 | 2.33 | 3.08 |
+
 ## Rozdíl gemma3 − llama3.2
 
 U chyb, cizího jazyka a odchylky délky je lepší **záporné** číslo (Gemma má méně), u hodnocení **kladné**.
 
-| jazyk | varianta | chyb_na_100_slov | podil_spatny_jazyk_pct | abs_odchylka_pct |
-|---|---|---|---|---|
-| cs | custom | -8.87 | 0.00 | -24.63 |
-| cs | zakladni | -8.44 | 0.00 | -5.40 |
-| en | custom | 0.00 | 0.00 | 0.73 |
-| en | zakladni | 0.00 | 0.00 | -3.67 |
+| jazyk | varianta | chyb_na_100_slov | podil_spatny_jazyk_pct | abs_odchylka_pct | hodnoceni_prumer |
+|---|---|---|---|---|---|
+| cs | custom | -8.87 | 0.00 | -24.63 | 0.58 |
+| cs | zakladni | -8.44 | 0.00 | -5.40 | 1.08 |
+| en | custom | 0.00 | 0.00 | 0.73 | 0.33 |
+| en | zakladni | 0.00 | 0.00 | -3.67 | 1.33 |
